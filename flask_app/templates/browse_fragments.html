@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Fragments</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+<body>
+    <header class="p-3" style="background-color: darkblue">
+        <div class="jumbotron text-center text">
+            <img class="img-fluid" src="/static/writers_junction_complete.png" alt="Logo">
+            <h3 style="color: white">The ultimate creative writing collaboration platform</h3>
+    </header>
+    <div class="container">
+        <a href="/dashboard/{{session['user_id']}}">Return to dashboard</a>
+    {% for fragment in fragments %}
+    <div class="card my-5" style="background-color: rgb(220, 204, 182)">
+        <div class="card-body">
+            <h5 class="card-title">Fragment id: {{fragment.id}}</h5>
+            <p class="card-text" style="white-space: pre-wrap">{{fragment.content}}</p>
+            <a href="#" class="btn btn-primary">View</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</body>
+</html>

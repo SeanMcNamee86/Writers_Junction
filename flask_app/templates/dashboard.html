@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+
+<body>
+    <header class="p-3" style="background-color: darkblue">
+        <div class="jumbotron text-center text">
+            <img class="img-fluid" src="/static/writers_junction_complete.png" alt="Logo">
+            <h3 style="color: white">The ultimate creative writing collaboration platform</h3>
+    </header>
+    <div class="container my-md-5" style="white-space: pre">
+        <p class="text-xl-center" style="font-size: 30px;">{{session['username']}}'s page</p>
+        <div class="d-flex justify-content-between" >
+            <a href="/stories/unfinished">Create a new fragment</a>
+            <a href="/fragments/browse">Browse all Fragments</a>
+            <a href ="/">Return to homepage</a>
+            <a href="/story/new">Start a new Story</a>
+        </div>
+        {% for fragment in fragments %}
+        <div class="card my-5">
+            <div class="card-body">
+                <h5 class="card-title">Fragment id: {{fragment.id}}</h5>
+                <p class="card-text" style="white-space: pre-wrap">{{fragment.content}}</p>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</body>
+
+</html>

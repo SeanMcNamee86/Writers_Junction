@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writer's Junction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+
+<body>
+    <header class="p-3" style="background-color: darkblue">
+        <div class="jumbotron text-center text">
+            <img class="img-fluid" src="/static/writers_junction_complete.png" alt="Logo">
+            <h3 style="color: white">The ultimate creative writing collaboration platform</h3>
+    </header>
+    <div class="container m-auto ">
+
+        <div class="d-flex justify-content-end m-auto">
+            <div class="justify-content-around">
+                {% if "user_id" not in session %}
+                <div style="font-size: 25px">
+                    <a href="/registration">Register</a>
+                    <a href="/login_page">Login</a>
+                </div>
+                {% else %}
+                <div style="font-size: 25px;">
+                    <span>Hello, <a href="/dashboard/{{session['user_id']}}">{{session["username"]}}</a></span>
+                    <span>| </span><a href="/logout" class="text-danger">Logout</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div>
+            {% for story in stories %}
+            <div class="card my-5 p-3" style="background-color: rgb(226, 214, 198); box-shadow: grey 3px 3px;">
+                <p class="text-center">{{story.title}}</p>
+                <br>
+                <p class="text-center">Started by: {{story.user.username}}</p>
+                <br>
+                {% for fragment in story.fragments %}
+                <p style="white-space: pre-wrap">{{fragment.content}}</p>
+                story fragment id: {{fragment.id}}
+                <br>
+                written by: {{fragment.user.username}}
+                <br>
+
+                {% endfor %}
+            </div>
+
+            {% endfor %}
+        </div>
+
+    </div>
+    <footer style="background-color: green">
+        <p class="text-center  align-self-center">Full Stack design by Sean McNamee</p>
+    </footer>
+    <style>
+        html {
+            background-color: azure;
+        }
+
+        .container {
+            background-color: azure;
+        }
+
+        body {
+            background-color: azure
+        }
+
+        footer {
+            background-color: darkblue;
+            height: 5rem;
+        }
+    </style>
+</body>
+
+</html>
