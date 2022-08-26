@@ -66,7 +66,7 @@ class User:
         if not EMAIL_REGEX.match(user['email']): 
             flash("Invalid email address!", "err_users_email")
             is_valid = False
-        if len(user["password"]) < 8 or user["pw"] != user["confirm_pw"]:
+        if len(user["password"]) < 8 or user["password"] != user["confirm_password"]:
             flash("Invalid password or password fields do not match", "err_users_pw")
             is_valid = False
         if User.check_matching_email(user):

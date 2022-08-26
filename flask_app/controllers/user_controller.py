@@ -24,7 +24,7 @@ def register():
     data = {
         **request.form
     }
-    data["pw"] = bcrypt.generate_password_hash(data["pw"])
+    data["password"] = bcrypt.generate_password_hash(data["password"])
     user = User.create_one(data)
     return redirect('/')
 
